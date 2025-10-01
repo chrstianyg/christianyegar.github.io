@@ -1,10 +1,23 @@
-/* Styling Dasar & Kontainer */
+/* --- Styling Dasar & Kontainer --- */
+:root {
+    --bg-dark: #121212;
+    --bg-card: #1e1e1e;
+    --text-light: #f0f0f0;
+    --accent: #f667ab;
+    --shadow: rgba(0, 0, 0, 0.4);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fff;
-    color: #333;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
 }
 
 .container {
@@ -14,14 +27,15 @@ body {
 }
 
 .section {
-    padding: 80px 0;
+    padding: 100px 0;
+    text-align: center;
 }
 
-/* Animasi Fade-in */
+/* --- Animasi --- */
 .animate {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .animated {
@@ -29,14 +43,13 @@ body {
     transform: translateY(0);
 }
 
-/* Header & Navigasi */
+/* --- Header & Navigasi --- */
 header {
-    background-color: #fff;
+    background-color: var(--bg-dark);
     padding: 20px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .nav-container {
@@ -47,103 +60,97 @@ header {
 
 .logo h1 {
     font-size: 1.5em;
-    color: #1D2D50;
+    color: var(--text-light);
     margin: 0;
 }
 
 nav a {
     text-decoration: none;
-    color: #555;
+    color: var(--text-light);
     font-weight: 500;
     margin-left: 30px;
     transition: color 0.3s;
 }
 
 nav a:hover {
-    color: #1D2D50;
+    color: var(--accent);
 }
 
-/* Bagian Hero */
+/* --- Bagian Hero --- */
 .hero-section {
-    background: linear-gradient(135deg, #000814, #001D3D, #003566);
-    padding: 100px 0;
-    color: #fff;
+    padding: 150px 0 100px;
 }
 
 .hero-content {
     display: flex;
     align-items: center;
-    gap: 50px;
-}
-
-.hero-text {
-    flex: 1;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .hero-text h1 {
     font-size: 3.5em;
     line-height: 1.2;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .hero-text p {
     font-size: 1.2em;
     font-style: italic;
     margin-bottom: 30px;
+    color: var(--text-light);
+    opacity: 0.8;
 }
 
 .hero-image img {
-    flex: 1;
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--accent);
+    box-shadow: 0 0 20px var(--accent);
+    transition: box-shadow 0.3s;
+}
+
+.hero-image img:hover {
+    box-shadow: 0 0 30px var(--accent);
 }
 
 .cta-button {
     display: inline-block;
-    background-color: #1D2D50;
-    color: #CCA000;
+    background-color: var(--accent);
+    color: var(--bg-dark);
     padding: 15px 40px;
     text-decoration: none;
     border-radius: 50px;
     font-weight: 600;
-    transition: background-color 0.4s, transform 0.4s;
+    transition: transform 0.3s, background-color 0.3s;
 }
 
 .cta-button:hover {
-    background-color: #000;
     transform: translateY(-5px);
+    background-color: #e6559b;
 }
 
-/* Bagian Tentang Saya */
+/* --- Bagian Tentang Saya & Keahlian --- */
 .about-section {
-    background: linear-gradient(135deg, #F8F9FA, #F0CB16);
+    background-color: var(--bg-dark);
 }
 
-.about-flex-container {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-
-.about-text-content {
-    flex: 2;
-}
-
-.about-text-content h2 {
+.about-title {
     font-size: 2.5em;
-    color: #1D2D50;
+    color: var(--text-light);
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .about-description {
     line-height: 1.8;
-}
-
-.about-image {
-    flex: 1;
+    font-style: italic;
+    color: var(--text-light);
+    opacity: 0.8;
 }
 
 .about-image img {
@@ -151,160 +158,90 @@ nav a:hover {
     max-width: 400px;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px var(--shadow);
 }
 
-/* Style untuk tombol-tombol */
 .button-group {
     display: flex;
     gap: 15px;
-    margin-top: 20px;
+    margin-top: 30px;
+    justify-content: center;
 }
 
-/* Style untuk tombol CV */
-.download-cv-btn {
+.download-cv-btn, .portfolio-btn {
     display: inline-block;
-    background-color: #1D2D50;
-    color: #fff;
+    background-color: var(--bg-card);
+    color: var(--text-light);
     padding: 12px 25px;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-.download-cv-btn:hover {
-    background-color: #000;
+.download-cv-btn:hover, .portfolio-btn:hover {
+    background-color: var(--accent);
+    color: var(--bg-dark);
+    transform: translateY(-3px);
 }
 
-/* Style untuk tombol portofolio baru */
-.portfolio-btn {
-    display: inline-block;
-    background-color: #F09410;
-    color: #fff;
-    padding: 12px 25px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.portfolio-btn:hover {
-    background-color: #000;
-}
-
-/* Bagian Keahlian & Portofolio */
 .skills-grid-container {
-    padding-top: 50px;
-    text-align: center;
+    padding-top: 80px;
 }
 
 .skills-grid {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 40px;
     flex-wrap: wrap;
+    margin-top: 40px;
 }
 
 .skill-item {
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    background: transparent;
     transition: transform 0.3s;
-    max-width: 250px;
-}
-
-.skill-item:hover {
-    transform: translateY(-10px);
-}
-
-.skill-item h3 {
-    color: #1D2D50;
-    margin-top: 0;
-}
-
-/* Bagian Sertifikat */
-.certificates-section {
-    background-color: #F8F9FA;
     text-align: center;
 }
 
-.certificates-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1100px;
-    margin: 0 auto;
+.skill-item i {
+    font-size: 3em;
+    color: var(--accent);
+    margin-bottom: 10px;
 }
 
-.certificate-card {
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: transform 0.4s;
+.skill-item h3 {
+    color: var(--text-light);
+    font-size: 1em;
+    margin: 0;
 }
 
-.certificate-card:hover {
-    transform: translateY(-10px);
-}
-
-.certificate-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.certificate-info {
-    padding: 20px;
-    text-align: left;
-}
-
-.certificate-info h3 {
-    color: #1D2D50;
-    margin-top: 0;
-}
-
-.certificate-info p {
-    font-size: 0.9em;
-    color: #555;
-}
-
-/* Bagian Portofolio */
+/* --- Bagian Portofolio --- */
 .portfolio-section {
-    background: linear-gradient(135deg, #000814, #001D3D, #003566);
-    padding-bottom: 120px;
+    background-color: var(--bg-card);
 }
 
 .section-title {
     font-size: 2.5em;
-    color: #1D2D50;
+    color: var(--text-light);
     text-align: center;
     margin-bottom: 50px;
-}
-
-.portfolio-section .section-title {
-    color: #fff;
 }
 
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    max-width: 1100px;
-    margin: 0 auto;
 }
 
 .project-card {
-    background-color: #fff;
+    background-color: var(--bg-dark);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: transform 0.4s;
-    text-align: center;
+    box-shadow: 0 4px 15px var(--shadow);
+    transition: transform 0.3s;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
+    transform: scale(1.05);
 }
 
 .project-card img {
@@ -319,111 +256,117 @@ nav a:hover {
 }
 
 .project-info h3 {
-    color: #000;
-    margin-top: 20px;
-    text-align: center;
+    color: var(--text-light);
+    font-size: 1.2em;
+    margin-top: 0;
 }
 
 .project-info p {
     font-size: 0.9em;
-    color: #555;
+    color: var(--text-light);
+    opacity: 0.7;
 }
 
 .project-info a {
     display: inline-block;
-    background-color: #000;
-    color: #fff;
+    background-color: var(--accent);
+    color: var(--bg-dark);
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
     font-weight: 500;
+    margin-top: 15px;
     transition: background-color 0.3s;
 }
 
 .project-info a:hover {
-    background-color: #F09410;
+    background-color: #e6559b;
 }
 
-/* Bagian Kontak */
+/* --- Bagian Kontak --- */
 .contact-section {
-    background: #fff;
-    color: #333;
-    padding: 80px 0;
-    text-align: center;
-}
-
-.contact-section .section-title {
-    color: #1D2D50;
+    background-color: var(--bg-dark);
 }
 
 .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    max-width: 800px;
-    margin: 0 auto;
 }
 
 .contact-card {
-    display: block;
-    background-color: #F8F9FA;
-    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--bg-card);
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px var(--shadow);
     text-decoration: none;
-    color: #000;
-    transition: transform 0.3s, box-shadow 0.3s;
+    color: var(--text-light);
+    transition: transform 0.3s, background-color 0.3s;
 }
 
 .contact-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    background-color: #2a2a2a;
 }
 
 .contact-card h3 {
     font-size: 1.5em;
-    color: #1D2D50;
+    color: var(--accent);
     margin: 0 0 5px;
 }
 
 .contact-card p {
     margin: 0;
-    color: #555;
+    color: var(--text-light);
+    opacity: 0.8;
 }
 
-/* Footer */
+/* --- Footer --- */
 footer {
-    background: #000;
-    color: #fff;
+    background-color: #0d0d0d;
+    color: #888;
     text-align: center;
     padding: 20px 0;
+    font-size: 0.9em;
 }
 
-/* Responsif */
+/* --- Responsif --- */
 @media (max-width: 768px) {
     .nav-container {
         flex-direction: column;
-        align-items: flex-start;
-    }
-    nav {
-        margin-top: 15px;
+        align-items: center;
     }
     nav a {
-        margin-left: 0;
-        margin-right: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
-    .hero-content, .about-flex-container {
-        flex-direction: column-reverse;
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
     }
     .hero-text h1 {
         font-size: 2.5em;
     }
-    .about-text-content h2 {
-        font-size: 2em;
+    .hero-image {
+        width: 180px;
+        height: 180px;
     }
-    .hero-image, .about-image {
-        width: 100%;
-        max-width: 300px;
+    .about-flex-container {
+        flex-direction: column;
+    }
+    .about-image {
+        order: 1;
         margin-bottom: 30px;
+    }
+    .about-text-content {
+        order: 2;
+    }
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
     }
 }
