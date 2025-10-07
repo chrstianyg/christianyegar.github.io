@@ -1,10 +1,11 @@
-/* --- Styling Dasar & Kontainer --- */
 :root {
-    --bg-dark: #121212;
-    --bg-card: #1e1e1e;
-    --text-light: #f0f0f0;
-    --accent: #f667ab;
-    --shadow: rgba(0, 0, 0, 0.4);
+    /* --- Perubahan Warna: Biru Navy dan Kuning Gelap --- */
+    --bg-dark: #0A192F; /* Navy Gelap */
+    --bg-card: #112240; /* Navy Lebih Terang */
+    --text-light: #ccd6f6; /* Hampir Putih */
+    --accent: #64FFDA; /* Biru Kehijauan untuk Aksen Utama, bisa diganti ke Kuning Gelap jika mau */
+    --accent-secondary: #FFC000; /* Kuning Gelap sebagai Aksen Sekunder */
+    --shadow: rgba(0, 0, 0, 0.6);
 }
 
 html {
@@ -50,6 +51,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 10px var(--shadow); /* Tambah bayangan agar lebih terlihat */
 }
 
 .nav-container {
@@ -94,6 +96,9 @@ nav a:hover {
     font-size: 3.5em;
     line-height: 1.2;
     margin-bottom: 10px;
+    background: linear-gradient(90deg, var(--text-light), var(--accent)); /* Gradasi warna pada Judul Hero */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-text p {
@@ -105,6 +110,7 @@ nav a:hover {
 }
 
 .hero-image img {
+    /* Bagian image di hero dihilangkan di HTML baru, tapi tetap jaga stylenya jika nanti ditambahkan lagi */
     width: 250px;
     height: 250px;
     border-radius: 50%;
@@ -131,10 +137,11 @@ nav a:hover {
 
 .cta-button:hover {
     transform: translateY(-5px);
-    background-color: #e6559b;
+    background-color: var(--accent-secondary); /* Gunakan kuning gelap untuk hover */
+    color: var(--bg-dark);
 }
 
-/* --- Bagian Tentang Saya & Keahlian --- */
+/* --- Bagian Tentang Saya, Hobi, & Pendidikan --- */
 .about-section {
     background-color: var(--bg-dark);
 }
@@ -146,11 +153,25 @@ nav a:hover {
     text-align: center;
 }
 
+.about-flex-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    text-align: left;
+}
+
+.about-text-content {
+    flex: 1;
+}
+
 .about-description {
     line-height: 1.8;
-    font-style: italic;
     color: var(--text-light);
     opacity: 0.8;
+}
+
+.about-image {
+    flex-shrink: 0;
 }
 
 .about-image img {
@@ -165,7 +186,7 @@ nav a:hover {
     display: flex;
     gap: 15px;
     margin-top: 30px;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .download-cv-btn, .portfolio-btn {
@@ -175,11 +196,12 @@ nav a:hover {
     padding: 12px 25px;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: background-color 0.3s, transform 0.3s, color 0.3s;
+    border: 1px solid var(--accent-secondary); /* Border aksen */
 }
 
 .download-cv-btn:hover, .portfolio-btn:hover {
-    background-color: var(--accent);
+    background-color: var(--accent-secondary);
     color: var(--bg-dark);
     transform: translateY(-3px);
 }
@@ -200,12 +222,19 @@ nav a:hover {
     background: transparent;
     transition: transform 0.3s;
     text-align: center;
+    max-width: 150px;
+    padding: 15px;
 }
 
 .skill-item i {
     font-size: 3em;
-    color: var(--accent);
+    color: var(--accent-secondary); /* Ikon skill menggunakan Kuning Gelap */
     margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+.skill-item:hover i {
+    color: var(--accent);
 }
 
 .skill-item h3 {
@@ -213,6 +242,40 @@ nav a:hover {
     font-size: 1em;
     margin: 0;
 }
+
+/* --- Konten Baru: Hobi & Pendidikan Grid --- */
+.about-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    text-align: left;
+    margin-top: 50px;
+}
+
+.hobby-list ul, .education-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.hobby-list li, .education-list li {
+    background-color: var(--bg-card);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-left: 5px solid var(--accent); /* Aksen Biru Navy */
+    transition: transform 0.3s;
+}
+
+.hobby-list li:hover, .education-list li:hover {
+    transform: translateX(5px);
+}
+
+.hobby-list h3, .education-list h3 {
+    color: var(--accent-secondary); /* Kuning gelap untuk sub-judul */
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
 
 /* --- Bagian Portofolio --- */
 .portfolio-section {
@@ -242,6 +305,7 @@ nav a:hover {
 
 .project-card:hover {
     transform: scale(1.05);
+    border-bottom: 3px solid var(--accent-secondary);
 }
 
 .project-card img {
@@ -280,7 +344,7 @@ nav a:hover {
 }
 
 .project-info a:hover {
-    background-color: #e6559b;
+    background-color: var(--accent-secondary); /* Gunakan kuning gelap untuk hover */
 }
 
 /* --- Bagian Kontak --- */
@@ -290,7 +354,7 @@ nav a:hover {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Dikecilkan sedikit untuk menampung Instagram */
     gap: 20px;
 }
 
@@ -298,6 +362,7 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center; /* Rata tengah untuk ikon */
     background-color: var(--bg-card);
     padding: 30px;
     border-radius: 10px;
@@ -307,9 +372,15 @@ nav a:hover {
     transition: transform 0.3s, background-color 0.3s;
 }
 
+.contact-card i {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: var(--accent-secondary); /* Ikon Kontak dengan Kuning Gelap */
+}
+
 .contact-card:hover {
     transform: translateY(-5px);
-    background-color: #2a2a2a;
+    background-color: #173b64; /* Navy sedikit lebih terang saat hover */
 }
 
 .contact-card h3 {
@@ -326,14 +397,34 @@ nav a:hover {
 
 /* --- Footer --- */
 footer {
-    background-color: #0d0d0d;
-    color: #888;
+    background-color: #050b16; /* Navy paling gelap */
+    color: #8892b0;
     text-align: center;
     padding: 20px 0;
     font-size: 0.9em;
 }
 
 /* --- Responsif --- */
+@media (max-width: 900px) {
+    .about-flex-container {
+        flex-direction: column;
+    }
+    .about-image {
+        order: 1;
+        margin-bottom: 30px;
+    }
+    .about-text-content {
+        order: 2;
+        text-align: center; /* Sesuaikan teks agar rata tengah saat responsif */
+    }
+    .button-group {
+        justify-content: center;
+    }
+    .about-content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-container {
         flex-direction: column;
@@ -353,16 +444,6 @@ footer {
     .hero-image {
         width: 180px;
         height: 180px;
-    }
-    .about-flex-container {
-        flex-direction: column;
-    }
-    .about-image {
-        order: 1;
-        margin-bottom: 30px;
-    }
-    .about-text-content {
-        order: 2;
     }
     .button-group {
         flex-direction: column;
