@@ -1,10 +1,11 @@
+/* --- Styling Dasar & Kontainer --- */
 :root {
-    /* --- Perubahan Warna: Biru Navy dan Kuning Gelap --- */
+    /* --- Perubahan Warna: Biru Navy, Biru Kehijauan, dan Kuning Gelap --- */
     --bg-dark: #0A192F; /* Navy Gelap */
     --bg-card: #112240; /* Navy Lebih Terang */
     --text-light: #ccd6f6; /* Hampir Putih */
-    --accent: #64FFDA; /* Biru Kehijauan untuk Aksen Utama, bisa diganti ke Kuning Gelap jika mau */
-    --accent-secondary: #FFC000; /* Kuning Gelap sebagai Aksen Sekunder */
+    --accent: #FFC000; /* Kuning Gelap (Aksen Utama) */
+    --accent-secondary: #64FFDA; /* Biru Kehijauan (Aksen Sekunder/Hover) */
     --shadow: rgba(0, 0, 0, 0.6);
 }
 
@@ -51,7 +52,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px var(--shadow); /* Tambah bayangan agar lebih terlihat */
+    box-shadow: 0 2px 10px var(--shadow);
 }
 
 .nav-container {
@@ -96,7 +97,7 @@ nav a:hover {
     font-size: 3.5em;
     line-height: 1.2;
     margin-bottom: 10px;
-    background: linear-gradient(90deg, var(--text-light), var(--accent)); /* Gradasi warna pada Judul Hero */
+    background: linear-gradient(90deg, var(--text-light), var(--accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -107,21 +108,6 @@ nav a:hover {
     margin-bottom: 30px;
     color: var(--text-light);
     opacity: 0.8;
-}
-
-.hero-image img {
-    /* Bagian image di hero dihilangkan di HTML baru, tapi tetap jaga stylenya jika nanti ditambahkan lagi */
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid var(--accent);
-    box-shadow: 0 0 20px var(--accent);
-    transition: box-shadow 0.3s;
-}
-
-.hero-image img:hover {
-    box-shadow: 0 0 30px var(--accent);
 }
 
 .cta-button {
@@ -137,7 +123,7 @@ nav a:hover {
 
 .cta-button:hover {
     transform: translateY(-5px);
-    background-color: var(--accent-secondary); /* Gunakan kuning gelap untuk hover */
+    background-color: var(--accent-secondary);
     color: var(--bg-dark);
 }
 
@@ -153,11 +139,13 @@ nav a:hover {
     text-align: center;
 }
 
+/* Perbaikan untuk layout Teks dan Gambar "Tentang Saya" */
 .about-flex-container {
     display: flex;
     align-items: center;
     gap: 50px;
     text-align: left;
+    margin-bottom: 80px; /* Jarak sebelum bagian Hobi/Edukasi */
 }
 
 .about-text-content {
@@ -197,15 +185,57 @@ nav a:hover {
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s, transform 0.3s, color 0.3s;
-    border: 1px solid var(--accent-secondary); /* Border aksen */
+    border: 1px solid var(--accent);
 }
 
 .download-cv-btn:hover, .portfolio-btn:hover {
-    background-color: var(--accent-secondary);
+    background-color: var(--accent);
     color: var(--bg-dark);
     transform: translateY(-3px);
 }
 
+/* Konten Baru: Hobi & Pendidikan Grid */
+.about-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    text-align: left;
+    margin-top: 50px;
+}
+
+.hobby-list h3, .education-list h3 {
+    color: var(--accent); /* Kuning gelap untuk sub-judul */
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+.hobby-list ul, .education-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.hobby-list li, .education-list li {
+    background-color: var(--bg-card);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-left: 5px solid var(--accent-secondary); /* Aksen Biru Kehijauan */
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hobby-list li:hover, .education-list li:hover {
+    transform: translateX(5px);
+}
+
+.hobby-list i, .education-list i {
+    color: var(--accent);
+    font-size: 1.5em;
+}
+
+/* Keahlian (Skills) */
 .skills-grid-container {
     padding-top: 80px;
 }
@@ -228,13 +258,13 @@ nav a:hover {
 
 .skill-item i {
     font-size: 3em;
-    color: var(--accent-secondary); /* Ikon skill menggunakan Kuning Gelap */
+    color: var(--accent);
     margin-bottom: 10px;
     transition: color 0.3s;
 }
 
 .skill-item:hover i {
-    color: var(--accent);
+    color: var(--accent-secondary);
 }
 
 .skill-item h3 {
@@ -242,40 +272,6 @@ nav a:hover {
     font-size: 1em;
     margin: 0;
 }
-
-/* --- Konten Baru: Hobi & Pendidikan Grid --- */
-.about-content-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    text-align: left;
-    margin-top: 50px;
-}
-
-.hobby-list ul, .education-list ul {
-    list-style: none;
-    padding: 0;
-}
-
-.hobby-list li, .education-list li {
-    background-color: var(--bg-card);
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border-left: 5px solid var(--accent); /* Aksen Biru Navy */
-    transition: transform 0.3s;
-}
-
-.hobby-list li:hover, .education-list li:hover {
-    transform: translateX(5px);
-}
-
-.hobby-list h3, .education-list h3 {
-    color: var(--accent-secondary); /* Kuning gelap untuk sub-judul */
-    margin-top: 0;
-    font-size: 1.2em;
-}
-
 
 /* --- Bagian Portofolio --- */
 .portfolio-section {
@@ -305,7 +301,7 @@ nav a:hover {
 
 .project-card:hover {
     transform: scale(1.05);
-    border-bottom: 3px solid var(--accent-secondary);
+    border-bottom: 3px solid var(--accent);
 }
 
 .project-card img {
@@ -344,7 +340,7 @@ nav a:hover {
 }
 
 .project-info a:hover {
-    background-color: var(--accent-secondary); /* Gunakan kuning gelap untuk hover */
+    background-color: var(--accent-secondary);
 }
 
 /* --- Bagian Kontak --- */
@@ -354,7 +350,7 @@ nav a:hover {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Dikecilkan sedikit untuk menampung Instagram */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
 }
 
@@ -362,7 +358,7 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; /* Rata tengah untuk ikon */
+    align-items: center;
     background-color: var(--bg-card);
     padding: 30px;
     border-radius: 10px;
@@ -375,17 +371,17 @@ nav a:hover {
 .contact-card i {
     font-size: 2em;
     margin-bottom: 10px;
-    color: var(--accent-secondary); /* Ikon Kontak dengan Kuning Gelap */
+    color: var(--accent);
 }
 
 .contact-card:hover {
     transform: translateY(-5px);
-    background-color: #173b64; /* Navy sedikit lebih terang saat hover */
+    background-color: #173b64;
 }
 
 .contact-card h3 {
     font-size: 1.5em;
-    color: var(--accent);
+    color: var(--accent-secondary);
     margin: 0 0 5px;
 }
 
@@ -397,7 +393,7 @@ nav a:hover {
 
 /* --- Footer --- */
 footer {
-    background-color: #050b16; /* Navy paling gelap */
+    background-color: #050b16;
     color: #8892b0;
     text-align: center;
     padding: 20px 0;
@@ -408,6 +404,7 @@ footer {
 @media (max-width: 900px) {
     .about-flex-container {
         flex-direction: column;
+        text-align: center;
     }
     .about-image {
         order: 1;
@@ -415,7 +412,7 @@ footer {
     }
     .about-text-content {
         order: 2;
-        text-align: center; /* Sesuaikan teks agar rata tengah saat responsif */
+        text-align: center;
     }
     .button-group {
         justify-content: center;
@@ -434,16 +431,8 @@ footer {
         margin-left: 10px;
         margin-right: 10px;
     }
-    .hero-content {
-        flex-direction: column;
-        text-align: center;
-    }
     .hero-text h1 {
         font-size: 2.5em;
-    }
-    .hero-image {
-        width: 180px;
-        height: 180px;
     }
     .button-group {
         flex-direction: column;
