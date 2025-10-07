@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sections.forEach(section => {
             const sectionTop = section.getBoundingClientRect().top;
             
+            // Animasi dimulai saat 80% dari bagian terlihat (0.8)
             if (sectionTop < windowHeight * 0.8) {
                 section.classList.add('animated');
             }
